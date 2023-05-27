@@ -39,7 +39,7 @@ set(SOURCE_FILES
       code/shaders/shader.cpp
 )
 set(SHADER_FILES shaders/box.fs shaders/box.vs shaders/billboard.vs)
-set(ASSET_FILES assets/textures/awesomeface.png assets/textures/container.jpg assets/textures/player.jpg)
+set(ASSET_FILES assets/textures/container.jpg assets/textures/player.jpg)
 set(ALL_PROJECT_FILES ${SOURCE_FILES} ${SHADER_FILES} ${ASSET_FILES})
 
 # for Visual Studio debug
