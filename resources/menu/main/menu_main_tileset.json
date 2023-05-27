@@ -1,0 +1,14 @@
+{ "columns":49,
+ "image":"resources/menu/main/menu_main.png",
+ "imageheight":704,
+ "imagewidth":1568,
+ "margin":0,
+ "name":"menu_main_tileset",
+ "spacing":0,
+ "tilecount":1078,
+ "tiledversion":"1.9.2",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":"1.9"
+}

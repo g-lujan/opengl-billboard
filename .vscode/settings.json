@@ -1,0 +1,19 @@
+{
+    "files.associations": {
+        "menu.h": "c",
+        "definitions.h": "c",
+        "resources.h": "c",
+        "sdl.h": "c",
+        "cute_tiled.h": "c",
+        "texture.h": "c",
+        "map.h": "c",
+        "*.tcc": "c",
+        "typeinfo": "c",
+        "game_state.h": "c",
+        "stdbool.h": "c",
+        "gmath.h": "c",
+        "math.h": "c",
+        "render.h": "c"
+    },
+    "cmake.configureOnOpen": true
+}
