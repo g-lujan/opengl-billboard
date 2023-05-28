@@ -5,16 +5,16 @@
 #include <string>
 #include "../camera/camera.hpp"
 
-int billboards_VAO();
+std::vector<unsigned int> billboards_VAOS();
 
 class Billboard {
 public:
-  Billboard(const unsigned int VAO, const unsigned int shader_id) : VAO{VAO}, shader_id{shader_id} {}
+  Billboard(std::vector<unsigned int> &VAOS, const unsigned int shader_id) : VAOS{VAOS}, shader_id{shader_id} {}
 
-  void draw(const glm::vec3 &position_world, const Camera &camera);
+  void draw(const glm::vec3 &position_world, const Camera &camera, int frame);
 
 public:
-  unsigned int VAO;
+  std::vector<unsigned int> VAOS;
   unsigned int shader_id;
   unsigned int texture_id;
 };

@@ -6,29 +6,31 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-int billboards_VAO()
+std::vector<unsigned int> billboards_VAOS()
 {
-  unsigned int VBO, VAO;
-  glGenVertexArrays(1, &VAO);
-  glGenBuffers(1, &VBO);
-
-  glBindVertexArray(VAO);
-  glBindBuffer(GL_ARRAY_BUFFER, VBO);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices::BILLBOARD), Vertices::BILLBOARD.data(), GL_STATIC_DRAW);
-  // position attribute
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0);
-  glEnableVertexAttribArray(0);
-  // texture coord attribute
-  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
-  glEnableVertexAttribArray(1);
+  std::vector<unsigned int> VAO{0,0,0,0,0,0};
+  glGenVertexArrays(6, VAO.data());
+  for(int i=0; i<6; i++){
+    unsigned int VBO;
+    glGenBuffers(1, &VBO);
+    glBindVertexArray(VAO[i]);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices::BILLBOARD[i]), Vertices::BILLBOARD[i].data(), GL_STATIC_DRAW);
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0);
+    glEnableVertexAttribArray(0);
+    // texture coord attribute
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+  }
   return VAO;
 }
 
-void Billboard::draw(const glm::vec3 &position_world, const Camera &camera)
+void Billboard::draw(const glm::vec3 &position_world, const Camera &camera, int frame)
 {
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-  glBindVertexArray(VAO);
+  glBindVertexArray(VAOS[frame]);
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, texture_id);
   glUseProgram(shader_id);

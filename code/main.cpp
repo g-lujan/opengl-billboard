@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
   }
 
   Resources::VAOS["box"] = boxes_VAO();
-  Resources::VAOS["billboard"] = billboards_VAO();
+  Resources::VAOS["billboard"] = billboards_VAOS();
   Resources::SHADERS["box"] =  Shader::compile("shaders/box.vs", "shaders/box.fs");
   Resources::SHADERS["billboard"] =  Shader::compile("shaders/billboard.vs", "shaders/box.fs");
 
@@ -32,9 +32,10 @@ int main(int argc, char *argv[])
   Controls::Configurations controls_configs;
   Player player(glm::vec3(3.0f, 0.0f, 3.0f));
   Clock clock;
-  Box box(Resources::VAOS["box"], Resources::SHADERS["box"]);
+  
+  Box box;
   box.texture_id = Resources::texture("assets/textures/container.jpg", false);
-  Box box2(Resources::VAOS["box"], Resources::SHADERS["box"]);
+  Box box2;
   box2.texture_id = Resources::texture("assets/textures/container.jpg", false);
   SDL_Event event;
 
@@ -44,7 +45,7 @@ int main(int argc, char *argv[])
     float delta = clock.delta();
     input.update();
     glm::vec3 prev_player_position = player.position;
-    player.handle_controls(controls_configs, input, camera.angular_position, delta);
+    player.tick(controls_configs, input, camera.angular_position, delta);
     if (Collision::AABBtoAABB(player.collider, box.collider)) {
       player.position = prev_player_position;
       player.update_collider();

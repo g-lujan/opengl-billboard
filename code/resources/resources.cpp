@@ -4,7 +4,7 @@
 #include <SDL.h>
 
 namespace Resources {
-  std::unordered_map<std::string, unsigned int> VAOS;
+  std::unordered_map<std::string, std::vector<unsigned int>> VAOS;
   std::unordered_map<std::string, unsigned int> SHADERS;
 }
 
