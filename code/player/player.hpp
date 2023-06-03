@@ -11,7 +11,8 @@
 #include "../collision/collision.hpp"
 
 struct Player {
-  Player(glm::vec3 position) : position(position), billboard(Resources::VAOS["billboard"], Resources::SHADERS["billboard"])
+  
+  Player(glm::vec3 position) : position(position), billboard(Resources::SHADERS["billboard"])
   {
     billboard.texture_id = Resources::texture("assets/textures/player.jpg");
   }
@@ -44,7 +45,7 @@ struct Player {
   }
 
   void update_collider() {
-    // posicoes meio chutadas, s� para testar
+    // posicoes meio chutadas, para testar
     collider.min = position;
     collider.max = {position.x + 1.0f, position.y + 1.0f, position.z + 1.0f};
   }

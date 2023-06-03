@@ -1,7 +1,10 @@
 #pragma once
+
 #include <array>
 #include <string>
+#include <vector>
 #include <glm/glm.hpp>
+
 #include "../controls/controls.hpp"
 #include "../camera/camera.hpp"
 #include "../collision/collision.hpp"

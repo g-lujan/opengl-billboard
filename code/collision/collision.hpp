@@ -10,4 +10,4 @@ namespace Collision {
   };
 
   bool AABBtoAABB(const AABB &first, const AABB &second);
-} // namespace Collision
+}

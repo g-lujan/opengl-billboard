@@ -17,7 +17,7 @@ find_package(GLEW REQUIRED)
 find_package(glm CONFIG REQUIRED)
 
 set(SOURCE_FILES 
-	  code/main.cpp
+	code/main.cpp
       code/external/stbi.hpp
       code/window/window.cpp
       code/window/window.hpp
@@ -33,6 +33,7 @@ set(SOURCE_FILES
       code/controls/configurations.hpp
       code/controls/configurations.cpp
       code/camera/camera.hpp
+      code/camera/camera.cpp
       code/resources/resources.cpp
       code/resources/resources.hpp
       code/shaders/shader.hpp

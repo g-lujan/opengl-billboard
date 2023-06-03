@@ -2,9 +2,7 @@
 
 #include <SDL2/SDL.h>
 #include <array>
-#include <functional>
 #include <glm/glm.hpp>
-#include <variant>
 
 namespace Controls {
 
@@ -28,4 +26,4 @@ namespace Controls {
       mouse_right = (mouse_buttons & SDL_BUTTON_RMASK) != 0;
     }
   };
-} // namespace Controls
+}
