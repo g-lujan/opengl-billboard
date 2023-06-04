@@ -13,7 +13,7 @@ namespace Controls {
   struct Configurations {
     Configurations();
 
-    std::unordered_map<std::string, std::function<void(Player *, float, float)>> move_actions;
-    std::unordered_map<SDL_Scancode, std::function<void(Player *, float, float)>> player_movement;
+    std::unordered_map<std::string, std::function<std::string(Player *, float, float)>> move_actions;
+    std::unordered_map<SDL_Scancode, std::function<std::string(Player *, float, float)>> player_movement;
   };
 } // namespace Controls

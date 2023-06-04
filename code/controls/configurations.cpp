@@ -1,10 +1,10 @@
 #include "configurations.hpp"
 #include "../player/player.hpp"
 
-static void move_left(Player *player, float angle, float displacement);
-static void move_right(Player *player, float angle, float displacement);
-static void move_up(Player *player, float angle, float displacement);
-static void move_down(Player *player, float angle, float displacement);
+static std::string move_left(Player *player, float angle, float displacement);
+static std::string move_right(Player *player, float angle, float displacement);
+static std::string move_up(Player *player, float angle, float displacement);
+static std::string move_down(Player *player, float angle, float displacement);
 
 Controls::Configurations::Configurations()
 {
@@ -20,26 +20,30 @@ Controls::Configurations::Configurations()
   player_movement[SDL_SCANCODE_S] = move_actions["move_down"];
 }
 
-static void move_left(Player *player, float angle, float displacement)
+static std::string move_left(Player *player, float angle, float displacement)
 {
   player->position.x -= displacement * glm::cos(angle - glm::radians(90.f));
   player->position.z -= displacement * glm::sin(angle - glm::radians(90.f));
+  return "move";
 }
 
-static void move_right(Player *player, float angle, float displacement)
+static std::string move_right(Player *player, float angle, float displacement)
 {
   player->position.x += displacement * glm::cos(angle - glm::radians(90.f));
   player->position.z += displacement * glm::sin(angle - glm::radians(90.f));
+  return "move";
 }
 
-static void move_up(Player *player, float angle, float displacement)
+static std::string move_up(Player *player, float angle, float displacement)
 {
   player->position.x -= displacement * glm::cos(angle);
   player->position.z -= displacement * glm::sin(angle);
+  return "move";
 }
 
-static void move_down(Player *player, float angle, float displacement)
+static std::string move_down(Player *player, float angle, float displacement)
 {
   player->position.x += displacement * glm::cos(angle);
   player->position.z += displacement * glm::sin(angle);
+  return "move";
 }

@@ -11,12 +11,17 @@ namespace Controls {
     bool mouse_left, mouse_middle, mouse_right;
     int mouse_x, mouse_y;
     int mouse_movement_dir; // R = 1, L = -1
+    bool empty = true;
 
     void update()
     {
+      empty = true;
       const Uint8 *state = SDL_GetKeyboardState(NULL);
       for (int scancode = 0; scancode < SDL_NUM_SCANCODES; ++scancode) {
         keys_down[scancode] = state[scancode];
+        if (state[scancode]) {
+          empty = false;
+        }
       }
       int prev_mouse_x_pos = mouse_x;
       Uint32 mouse_buttons = SDL_GetMouseState(&mouse_x, &mouse_y); // can't pass floats here
