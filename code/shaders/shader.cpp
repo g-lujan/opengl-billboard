@@ -1,4 +1,6 @@
 #include "shader.hpp"
+
+#include <GL/glew.h>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -55,6 +57,7 @@ unsigned int Shader::compile(const std::string &vertexPath, const std::string &f
   }
   const char *vShaderCode = vertexCode.c_str();
   const char *fShaderCode = fragmentCode.c_str();
+  
   // 2. compile shaders
   // vertex shader
   unsigned int vertex = glCreateShader(GL_VERTEX_SHADER);
@@ -72,7 +75,8 @@ unsigned int Shader::compile(const std::string &vertexPath, const std::string &f
   glAttachShader(id, fragment);
   glLinkProgram(id);
   checkCompileErrors(id, "PROGRAM");
-  // delete the shaders as they're linked into our program now and no longer necessary
+
+  // 3. delete the shaders as they're linked into our program now and no longer necessary
   glDeleteShader(vertex);
   glDeleteShader(fragment);
   return id;

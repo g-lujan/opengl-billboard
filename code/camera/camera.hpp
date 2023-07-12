@@ -8,7 +8,7 @@ public:
   Camera(glm::vec3 position, float yaw, float pitch);
   Camera(float posX, float posY, float posZ, float yaw, float pitch);
 
-  void rotate(int mouse_move_dir, float delta);
+  void rotate(int mouse_move_dir);
   void update(const glm::vec3 &center);
 
   float angular_position() const { return angular_position_; }

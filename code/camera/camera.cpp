@@ -1,6 +1,7 @@
 #pragma once
 
 #include "camera.hpp"
+#include "../clock/clock.hpp"
 #include <vector>
 
 #include <glm/gtc/matrix_transform.hpp>
@@ -15,7 +16,7 @@ namespace Default {
   static constexpr glm::vec3 WORLD_UP = glm::vec3(0.0f, 1.0f, 0.0f);
 }
 
-Camera::Camera() : Camera(glm::vec3(0.0f, 3.0f, 5.0f), Default::YAW, Default::PITCH) {}
+Camera::Camera() : Camera(glm::vec3(0.0f, 5.0f, 0.0f), Default::YAW, Default::PITCH) {}
 
 // constructor with vectors
 Camera::Camera(glm::vec3 position, float yaw, float pitch)
@@ -44,10 +45,10 @@ Camera::Camera(float posX, float posY, float posZ, float yaw, float pitch)
   update_camera_vectors();
 }
 
-void Camera::rotate(int mouse_move_dir, float delta)
+void Camera::rotate(int mouse_move_dir)
 {
   float rotation_speed = 2.f;
-  angular_position_ += mouse_move_dir * rotation_speed * delta;
+  angular_position_ += mouse_move_dir * rotation_speed * CLOCK.delta();
 }
 
 void Camera::update(const glm::vec3 &center)

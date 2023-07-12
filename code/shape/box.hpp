@@ -19,8 +19,6 @@ public:
 
  public:
   float rotation_speed = .0f;
-
-public:
   unsigned int texture_id;
   Collision::AABB collider;
 };

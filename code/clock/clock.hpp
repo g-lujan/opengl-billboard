@@ -3,14 +3,14 @@
 #include <SDL2/SDL.h>
 
 struct Clock {
-  float delta() {
-    last = now;
-    now = SDL_GetPerformanceCounter();
-    return (now - last) / (float)SDL_GetPerformanceFrequency();
-  }
-
+  Clock();
+  void update_delta();
+  float delta(){ return delta_; }
 
 private:
-  Uint64 now = SDL_GetPerformanceCounter();
-  Uint64 last = 0;
+  Uint64 now_;
+  Uint64 last_;
+  float delta_;
 };
+
+extern Clock CLOCK;

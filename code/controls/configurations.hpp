@@ -3,7 +3,7 @@
 #include <SDL2/SDL.h>
 #include <array>
 #include <functional>
-#include <variant>
+#include <unordered_map>
 #include <string>
 
 struct Player;
@@ -14,6 +14,6 @@ namespace Controls {
     Configurations();
 
     std::unordered_map<std::string, std::function<std::string(Player *, float, float)>> move_actions;
-    std::unordered_map<SDL_Scancode, std::function<std::string(Player *, float, float)>> player_movement;
+    std::array<std::function<std::string(Player *, float, float)>, SDL_NUM_SCANCODES> player_movement;
   };
 } // namespace Controls
