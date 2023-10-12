@@ -2,7 +2,7 @@
 
 #include <glm/glm.hpp>
 
-#include "../animation/animation.hpp"
+#include "../graphics/animation.hpp"
 #include "../camera/camera.hpp"
 #include "../collision/collision.hpp"
 #include "../controls/configurations.hpp"
@@ -21,7 +21,7 @@ struct Player {
 
   glm::vec3 position;
   float speed = 2.0f;
-  Billboard billboard;
+  Render::Billboard billboard;
   Collision::AABB collider;
 
   std::string current_animation;

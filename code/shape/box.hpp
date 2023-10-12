@@ -9,16 +9,16 @@
 #include "../camera/camera.hpp"
 #include "../collision/collision.hpp"
 
-std::vector<unsigned int> boxes_VAO();
+namespace Render {
+  std::vector<unsigned int> boxes_VAO();
 
-class Box {
-public:
-  Box() {}
+  class Box {
+  public:
+    Box() : texture_id{0} {}
 
-  void draw(const glm::vec3 &position_world, const Camera &camera);
+    void draw(const Camera &camera, const glm::vec3 &world_position);
 
- public:
-  float rotation_speed = .0f;
-  unsigned int texture_id;
-  Collision::AABB collider;
-};
+  public:
+    unsigned int texture_id;
+  };
+}

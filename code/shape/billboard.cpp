@@ -11,7 +11,7 @@
 static const glm::mat4 projection = glm::perspective(glm::radians(45.0f), 800.f / 600.f, 0.1f, 100.0f);
 static const glm::vec2 board_size = glm::vec2(1.f, 1.f);
 
-std::vector<unsigned int> billboards_VAOS()
+std::vector<unsigned int> Render::billboards_VAOS()
 {
   std::vector<unsigned int> VAO{0, 0, 0, 0, 0, 0};
   glGenVertexArrays(6, VAO.data());
@@ -33,7 +33,7 @@ std::vector<unsigned int> billboards_VAOS()
   return VAO;
 }
 
-void Billboard::draw(const glm::vec3 &position_world, const Camera &camera, int frame)
+void Render::Billboard::draw(const glm::vec3 &position_world, const Camera &camera, int frame)
 {
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

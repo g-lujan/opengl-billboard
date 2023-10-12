@@ -42,8 +42,8 @@ set(SOURCE_FILES
       code/resources/resources.hpp
       code/shaders/shader.hpp
       code/shaders/shader.cpp
-      code/animation/animation.hpp
-      code/animation/animation.cpp
+      code/graphics/animation.hpp
+      code/graphics/animation.cpp
 )
 set(SHADER_FILES shaders/box.fs shaders/box.vs shaders/billboard.vs)
 set(ASSET_FILES assets/textures/container.jpg assets/textures/player.jpg)

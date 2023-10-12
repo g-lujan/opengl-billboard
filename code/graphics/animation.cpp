@@ -4,7 +4,7 @@
 
 namespace Animation {
 
-    Animations::Animations() : last_frame_change{SDL_GetTicks64()}{ }
+    Animations::Animations() : last_frame_change{(unsigned int)SDL_GetTicks64()}{ }
 
     void Animations::add_frame(std::string to, Frame &frame){
         if(animations.contains(to)){

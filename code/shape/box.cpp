@@ -10,7 +10,7 @@
 
 static const glm::mat4 projection = glm::perspective(glm::radians(45.0f), 800.f / 600.f, 0.1f, 100.0f);
 
-std::vector<unsigned int> boxes_VAO()
+std::vector<unsigned int> Render::boxes_VAO()
 {
   unsigned int VBO;
   std::vector<unsigned int> VAO{0};
@@ -32,15 +32,8 @@ std::vector<unsigned int> boxes_VAO()
   return VAO;
 }
 
-void Box::draw(const glm::vec3 &position_world, const Camera &camera)
+void Render::Box::draw(const Camera &camera, const glm::vec3 &world_position)
 {
-  // --- START TEST ---
-  // posicoes meio chutadas, para testar
-  // e isso nem deveria ficar no draw
-  collider.min = position_world;
-  collider.max = {position_world.x + 1.0f, position_world.y + 1.0f, position_world.z + 1.0f};
-  // --- END TEST ---
-
   glBindVertexArray(Resources::VAOS["box"][0]);
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, texture_id);
@@ -48,7 +41,7 @@ void Box::draw(const glm::vec3 &position_world, const Camera &camera)
 
   glUniformMatrix4fv(glGetUniformLocation(Resources::SHADERS["box"], "projection"), 1, GL_FALSE, &projection[0][0]);
   glUniformMatrix4fv(glGetUniformLocation(Resources::SHADERS["box"], "view"), 1, GL_FALSE, camera.view_matrix());
-  glm::mat4 model = glm::translate(glm::mat4(1.0f), position_world);
+  glm::mat4 model = glm::translate(glm::mat4(1.0f), world_position);
   glUniformMatrix4fv(glGetUniformLocation(Resources::SHADERS["box"], "model"), 1, GL_FALSE, &model[0][0]);
 
   glDrawArrays(GL_TRIANGLES, 0, 36);
